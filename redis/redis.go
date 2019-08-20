@@ -14,8 +14,8 @@ import (
 
 	"github.com/mitchellh/mapstructure"
 
+	"github.com/ccdeer/EasyGoLib/utils"
 	"github.com/go-redis/redis"
-	"github.com/penggy/EasyGoLib/utils"
 )
 
 var Client *redis.Client

@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/ccdeer/EasyGoLib/utils"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
-	"github.com/penggy/EasyGoLib/utils"
 )
 
 type Model struct {

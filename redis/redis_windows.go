@@ -11,8 +11,8 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/ccdeer/EasyGoLib/utils"
 	"github.com/go-redis/redis"
-	"github.com/penggy/EasyGoLib/utils"
 )
 
 func Init() (err error) {
