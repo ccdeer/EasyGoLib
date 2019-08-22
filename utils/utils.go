@@ -35,6 +35,35 @@ func LocalIP() string {
 	return ip
 }
 
+func GetMac(ifname string) string {
+	var macAddress net.HardwareAddr
+
+	if ifname == "" {
+		interfaces, err := net.Interfaces()
+		if err != nil {
+			return ""
+		}
+		for _, v := range interfaces {
+			if v.Name != "lo" {
+				macAddress = v.HardwareAddr
+				break
+			}
+		}
+	} else {
+		netInterface, err := net.InterfaceByName(ifname)
+		if err != nil {
+			return ""
+		}
+		macAddress = netInterface.HardwareAddr
+	}
+	// verify if the MAC address can be parsed properly
+	hwAddr, err := net.ParseMAC(macAddress.String())
+	if err != nil {
+		return ""
+	}
+	return hwAddr.String()
+}
+
 func MD5(str string) string {
 	encoder := md5.New()
 	encoder.Write([]byte(str))
@@ -231,8 +260,8 @@ func ShortID() string {
 }
 
 func PauseExit() {
-	log.Println("Press any to exit")
-	keyboard.GetSingleKey()
+	// log.Println("Press any to exit")
+	// keyboard.GetSingleKey()
 	os.Exit(0)
 }
 
